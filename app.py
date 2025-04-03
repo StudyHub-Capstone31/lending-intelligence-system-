@@ -65,8 +65,8 @@ def home():
                 approval_prob = model.predict_proba(input_data)[0][1]
                 prediction = {
                     'loan_approved': bool(raw_prediction),
-                    'approval_probability': approval_prob,
-                    'risk_score': None  # Adjust if risk_score is calculated separately
+                    'approval_probability': float(approval_prob),
+                    'risk_score': int((1 - approval_prob) * 100)
                 }
             else:
 
